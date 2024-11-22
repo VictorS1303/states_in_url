@@ -1,10 +1,10 @@
-import Button from './components/Button.jsx'
+import ProductCustomization from './components/ProductCustomization.jsx'
 
 export default function Page() 
 {
     return (
         <>
-            
+            <ProductCustomization />   
         </>
     ) 
 }
