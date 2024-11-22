@@ -1,13 +1,13 @@
 import Button from './Button.jsx'
 import Header from './Header.jsx'
 
-const SizePicker = ({ headerText }) =>
+const SizePicker = () =>
 {
     const sizes = ['xs', 's', 'm', 'lg', 'xl', 'xxl']
 
     return (
         <article className="mt-4">
-            <Header headerText={headerText}>
+            <Header>
                 <h3 headerText="Size" className="text-black text-xl text-left">Size</h3>
             </Header>
 

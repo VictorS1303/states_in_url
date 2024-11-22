@@ -4,6 +4,7 @@ import tShirt from '@/images/tshirt/tshirt.png'
 import Section from './Section.jsx'
 import Header from './Header.jsx'
 import SizePicker from './SizePicker.jsx'
+import ColorPicker from './ColorPicker.jsx'
 
 
 export default function ProductCustomization() 
@@ -25,6 +26,7 @@ export default function ProductCustomization()
                         className="text-black text-2xl underline text-center" 
                     />
                     <SizePicker />
+                    <ColorPicker />
                 </article>
             </div>
         </Section>
