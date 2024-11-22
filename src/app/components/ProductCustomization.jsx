@@ -3,13 +3,14 @@ import tShirt from '@/images/tshirt/tshirt.png'
 
 import Section from './Section.jsx'
 import Header from './Header.jsx'
+import SizePicker from './SizePicker.jsx'
 
 
 export default function ProductCustomization() 
 {
     return (
         <Section>
-            <div className="flex justify-center items-start h-fit gap-40 mt-48">
+            <div className="mx-auto flex justify-center align-center w-[1200px] items-start h-fit gap-40 mt-48">
                 <article>
                     <Image
                         src={tShirt}
@@ -18,8 +19,12 @@ export default function ProductCustomization()
                         alt="T-shirt image"
                     />
                 </article>
-                <article>
-                    <Header headerText="Bare en T-shirt" className="text-black text-2xl underline" />
+                <article className="self-left w-[50%]">
+                    <Header 
+                        headerText="Bare en T-shirt" 
+                        className="text-black text-2xl underline text-center" 
+                    />
+                    <SizePicker />
                 </article>
             </div>
         </Section>
