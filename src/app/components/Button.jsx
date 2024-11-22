@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 
-const Button = ({ href, className, buttonText }) =>
+const Button = ({ href, buttonText }) =>
 {
     return (
             <Link
