@@ -11,7 +11,7 @@ const ColorPicker = () =>
         { buttonText: 'Lightblue', buttonBackgroundColor: '#add8e6' },
     ];
 
-    const chosenColor = 'Lightblue'
+    const chosenColor = 'Olive'
 
     return (
         <article className="mt-12">
@@ -20,18 +20,17 @@ const ColorPicker = () =>
             </Header>
 
             <div className="color-picker-buttons-container flex gap-5 mt-3">
-                {
-                    colorPickerButtons.map((colorPickerButton, color, index) => (
-                        <button
-                            key={index}
-                            className={`${chosenColor === color ? '-scale-75' : 'scale-100'} text-white p-2 rounded transition ease-in duration-150 hover:opacity-80`}
-                            style={{ backgroundColor: colorPickerButton.buttonBackgroundColor }}
-                            href="#"
-                        >
-                            {colorPickerButton.buttonText}
-                        </button>
-                    ))
-                }
+                {colorPickerButtons.map((colorPickerButton) => (
+                    <button
+                        key={colorPickerButton.buttonText}
+                        className={`${
+                            chosenColor === colorPickerButton.buttonText ? 'scale-90' : 'scale-100'
+                        } text-white p-2 rounded transition ease-in duration-150 hover:opacity-80`}
+                        style={{ backgroundColor: colorPickerButton.buttonBackgroundColor }}
+                    >
+                        {colorPickerButton.buttonText}
+                    </button>
+                ))}
             </div>
         </article>
     );
