@@ -1,9 +1,19 @@
+'use client'
+
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 import Header from './Header.jsx'
 
 const SizePicker = () =>
 {
+    const router = useRouter()    
     const sizes = ['xs', 's', 'm', 'lg', 'xl', 'xxl']
-    const chosenSize = 'lg'
+    // const chosenSize = 'lg'
+
+    useEffect(() =>
+    {
+        router.push(`&size=`)
+    }, [])
 
     return (
         <article className="mt-4">
@@ -20,7 +30,6 @@ const SizePicker = () =>
                                 {size}
                             </button>
                         )
-
                     })
                 }
             </div>
