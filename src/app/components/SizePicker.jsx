@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Header from './Header.jsx'
 
 const SizePicker = () =>
-const SizePicker = () =>
 {
     const sizes = ['xs', 's', 'm', 'lg', 'xl', 'xxl']
 
