@@ -1,21 +1,18 @@
 'use client'
-import { useState, useEffect } from "react"
-import { useRouter } from 'next/navigation'
 
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
 import Header from './Header.jsx'
 
 const SizePicker = () =>
 {
     const router = useRouter()
-
-    // Sizes
-    const [chosenSize, setChosenSize] = useState('s')
+    const [chosenSize, setChosenSize] = useState('md')
     const sizes = ['xs', 's', 'm', 'lg', 'xl', 'xxl']
-
+    
     useEffect(() =>
     {
-        // history.pushState(null, '', `?size=${chosenSize}`)
-        router.push(`?size=${chosenSize}`, {scroll: false})
+        router.push(`?size=${chosenSize}`)
     }, [chosenSize, router])
 
     return (
@@ -33,7 +30,6 @@ const SizePicker = () =>
                                 {size}
                             </button>
                         )
-
                     })
                 }
             </div>
