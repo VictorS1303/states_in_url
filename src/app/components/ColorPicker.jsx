@@ -1,9 +1,8 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation'
-import Header from './Header.jsx'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation';
+import Header from './Header.jsx';
 
 const ColorPicker = () =>
 {
@@ -15,13 +14,14 @@ const ColorPicker = () =>
         { buttonText: 'Lightblue', buttonBackgroundColor: '#add8e6' },
     ];
 
-    const router = useRouter()
-    const [chosenColor, setChosenColor] = useState('Olive')
+    const router = useRouter();
+    const [chosenColor, setChosenColor] = useState('Olive');
 
     useEffect(() =>
     {
-        router.push(`&color=${chosenColor}`, {scroll: false})
-    }, [setChosenColor, router])
+        // Avoid unnecessary redirects
+        router.push(`?color=${chosenColor}`, { scroll: false });
+    }, [chosenColor, router]); // Only depend on `chosenColor` and `router`
 
     return (
         <article className="mt-12">
@@ -30,13 +30,14 @@ const ColorPicker = () =>
             </Header>
 
             <div className="color-picker-buttons-container flex gap-5 mt-3">
-                {colorPickerButtons.map((colorPickerButton, buttonText) => (
+                {colorPickerButtons.map((colorPickerButton) => (
                     <button
                         key={colorPickerButton.buttonText}
                         className={`${chosenColor === colorPickerButton.buttonText ? 'scale-90' : 'scale-100'
                             } text-white p-2 rounded transition ease-in duration-150 hover:opacity-80`}
                         style={{ backgroundColor: colorPickerButton.buttonBackgroundColor }}
-                        onClick={() => setChosenColor(buttonText)}>
+                        onClick={() => setChosenColor(colorPickerButton.buttonText)} // Fix handler
+                    >
                         {colorPickerButton.buttonText}
                     </button>
                 ))}
