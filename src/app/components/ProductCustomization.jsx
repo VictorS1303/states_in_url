@@ -28,8 +28,8 @@ export default function ProductCustomization()
                     />
                     <SizePicker />
                     <ColorPicker />
-                    <Link href="/payment" className="inline-block w-[275px] text-center bg-green-500 mt-28 ml-12 py-4 rounded-full uppercase font-bold tracking-wider transition ease-in duration-150 hover:opacity-80">
-                        Go To Cart
+                    <Link href="/checkout" className="inline-block w-[275px] text-center bg-green-500 mt-28 ml-12 py-4 rounded-full uppercase font-bold tracking-wider transition ease-in duration-150 hover:opacity-80">
+                        Go To Checkout
                     </Link>
                 </article>
             </div>
