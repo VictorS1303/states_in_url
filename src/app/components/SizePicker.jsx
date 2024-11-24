@@ -1,19 +1,22 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Header from './Header.jsx'
 
 const SizePicker = () =>
 {
     const router = useRouter()
+    const searchParams = useSearchParams()
     const [chosenSize, setChosenSize] = useState('md')
     const sizes = ['xs', 's', 'm', 'lg', 'xl', 'xxl']
     
     useEffect(() =>
     {
-        router.push(`?size=${chosenSize}`)
-    }, [chosenSize, router])
+        const params = new URLSearchParams(searchParams.toString())
+        params.set('size', chosenSize)
+        router.push(`?${params.toString()}`)
+    }, [chosenSize, searchParams, router])
 
     return (
         <article className="mt-4">
