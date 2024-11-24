@@ -1,44 +1,47 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation'
 import Header from './Header.jsx';
 
 const ColorPicker = () =>
 {
-    const colorPickerButtons = [
-        { buttonText: 'Gray', buttonBackgroundColor: '#ccc' },
-        { buttonText: 'Mocca', buttonBackgroundColor: '#a07b71' },
-        { buttonText: 'Olive', buttonBackgroundColor: '#808000' },
-        { buttonText: 'Navy', buttonBackgroundColor: '#000080' },
-        { buttonText: 'Lightblue', buttonBackgroundColor: '#add8e6' },
-    ];
 
     const router = useRouter();
-    const [chosenColor, setChosenColor] = useState('Olive');
+    const searchParams = useSearchParams()
+    const [chosenColor, setChosenColor] = useState('gray');
+
+
+    const colors = [
+        { name: 'Gray', value: 'gray', backgroundColor: '#ccc' },
+        { name: 'Mocca', value: 'mocca', backgroundColor: '#a07b71' },
+        { name: 'Olive', value: 'olive', backgroundColor: '#808000' },
+        { name: 'Navy', value: 'navy', backgroundColor: '#000080' },
+        { name: 'Blue', value: 'blue', backgroundColor: '#add8e6' },
+    ];
 
     useEffect(() =>
     {
-        // Avoid unnecessary redirects
-        router.push(`?color=${chosenColor}`, { scroll: false });
-    }, [chosenColor, router]); // Only depend on `chosenColor` and `router`
+        const params = new URLSearchParams(searchParams.toString())
+        params.set('color', chosenColor)
+        router.push(`?${params.toString()}`)
+    }, [chosenColor, searchParams, router]);
 
     return (
-        <article className="mt-12">
+        <article className="mt-4">
             <Header>
                 <h3 className="text-black text-xl text-left">Color</h3>
             </Header>
 
-            <div className="color-picker-buttons-container flex gap-5 mt-3">
-                {colorPickerButtons.map((colorPickerButton) => (
+            <div className="container color-picker-buttons-container flex gap-4 mt-2">
+                {colors.map((color, index) => (
                     <button
-                        key={colorPickerButton.buttonText}
-                        className={`${chosenColor === colorPickerButton.buttonText ? 'scale-90' : 'scale-100'
-                            } text-white p-2 rounded transition ease-in duration-150 hover:opacity-80`}
-                        style={{ backgroundColor: colorPickerButton.buttonBackgroundColor }}
-                        onClick={() => setChosenColor(colorPickerButton.buttonText)} // Fix handler
+                        key={index}
+                        className={`${chosenColor === color.value ? 'scale-90' : 'scale-100'} grid place-content-center w-fit h-[50px] px-4 text-lg uppercase rounded-md cursor-pointer transition-opacity ease-in duration-150 hover:opacity-80`}
+                        style={{ backgroundColor: color.backgroundColor }}
+                        onClick={() => setChosenColor(color.value)}
                     >
-                        {colorPickerButton.buttonText}
+                        {color.name}
                     </button>
                 ))}
             </div>
